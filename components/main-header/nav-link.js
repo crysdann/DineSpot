@@ -2,6 +2,7 @@
 import { usePathname } from "next/navigation";
 import React from "react";
 import classes from "./nav-link.module.css";
+import Link from "next/link";
 
 function NavLink({ href, children }) {
   const path = usePathname();
