@@ -1,0 +1,94 @@
+.header {
+  display: flex;
+  gap: 3rem;
+  margin: 1rem auto;
+  width: 90%;
+  max-width: 75rem;
+}
+
+.slideshow {
+  width: 80%;
+  height: 35rem;
+  position: absolute;
+  opacity: 0.7;
+}
+.slideshowoverlay {
+  z-index: 1;
+  text-align: center;
+  width: 100%;
+  margin-top: 8%;
+}
+
+.hero {
+  color: #ddd6cb;
+  font-size: 1.5rem;
+}
+
+.hero h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 0.15rem;
+  text-transform: uppercase;
+  /* background: linear-gradient(90dseg, #c5001a, #fdf6f6); */
+  background-color: #fdf6f6;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.cta {
+  font-size: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+  justify-content: center;
+}
+
+.cta a {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  /* background: linear-gradient(9s0deg, #c5001a, #fdf6f6); */
+  background-color: #c5001a;
+  color: #ffffff;
+  font-weight: bold;
+  text-decoration: none;
+  transition: box-shadow 0.3s ease, transform 0.3s ease; /* Smooth transition for the shadow */
+}
+
+.cta a:hover,
+.cta a:active {
+  background: linear-gradient(90deg, #c5001a, #c5001a);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2), 0px 6px 20px rgba(0, 0, 0, 0.19); /* Shadow effect */
+  transform: translateY(-2px);
+}
+
+.cta a:first-child {
+  background: transparent;
+  font-weight: normal;
+  color: #fdf6f6;
+  padding-left: 0;
+}
+
+.cta a:first-child:hover,
+.cta a:first-child:active {
+  background: transparent;
+  color: #ba0f26;
+}
+
+.mainsection {
+  margin-top: 20rem;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  color: #ddd6cb;
+  font-size: 1.5rem;
+  max-width: 50rem;
+  width: 90%;
+  margin: 2rem auto;
+  text-align: center;
+}
