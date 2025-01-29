@@ -17,7 +17,7 @@ function RestaurantsPage() {
         </p>
       </header>
       <main className={classes.main}>
-        <RestaurantGrid></RestaurantGrid>
+        <RestaurantGrid restaurants={[]}></RestaurantGrid>
       </main>
     </>
   );

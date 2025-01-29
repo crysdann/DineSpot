@@ -18,10 +18,10 @@ function MainHeader() {
         <nav className={classes.nav}>
           <ul>
             <li>
-              <NavLink href="/restaurants"></NavLink>
+              <NavLink href="/restaurants">Restaurants</NavLink>
             </li>
             <li>
-              <NavLink href="/community"></NavLink>
+              <NavLink href="/community">Community</NavLink>
             </li>
           </ul>
         </nav>
