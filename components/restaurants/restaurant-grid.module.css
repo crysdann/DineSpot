@@ -8,3 +8,7 @@
   list-style: none;
   padding: 0;
 }
+.restaurants li {
+  background-color: black;
+  box-shadow: 0 0 15px rgb(75 72 72 / 80%);
+}

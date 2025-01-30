@@ -2,22 +2,25 @@ import React from "react";
 import classes from "./page.module.css";
 import Link from "next/link";
 import RestaurantGrid from "@/components/restaurants/restaurant-grid";
+import { getRestaurants } from "@/lib/restaurants";
 
-function RestaurantsPage() {
+async function RestaurantsPage() {
+  const restaurants = await getRestaurants();
   return (
     <>
       <header className={classes.header}>
-        <h1>
-          Most favorite restaurants{" "}
-          <span className={classes.highlight}>that you might like</span>
-        </h1>
+        <h2 className={classes.highlight}>
+          Most favorite restaurants that you might like
+        </h2>
         <p>Choose your favourite restaurant</p>
         <p className={classes.cta}>
-          <Link href="/restaurants/share">Share your favourite restaurant</Link>
+          <Link href="/restaurants/share">
+            Share your favourite restaurant{" "}
+          </Link>
         </p>
       </header>
       <main className={classes.main}>
-        <RestaurantGrid restaurants={[]}></RestaurantGrid>
+        <RestaurantGrid restaurants={restaurants}></RestaurantGrid>
       </main>
     </>
   );
