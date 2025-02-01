@@ -11,7 +11,7 @@ export default function Home() {
         <div className={classes.slideshowoverlay}>
           <div className={classes.hero}>
             <h1>Discover delicious bites around the corner</h1>
-            <p>Let’s find you a table nearby</p>
+            <p>Let's find you a table nearby</p>
           </div>
           <div className={classes.cta}>
             <Link href="/community">Join the community</Link>

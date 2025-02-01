@@ -1,11 +1,15 @@
-import React from "react";
+import React, { Suspense } from "react";
 import classes from "./page.module.css";
 import Link from "next/link";
 import RestaurantGrid from "@/components/restaurants/restaurant-grid";
 import { getRestaurants } from "@/lib/restaurants";
 
-async function RestaurantsPage() {
+async function Restaurants() {
   const restaurants = await getRestaurants();
+  return <RestaurantGrid restaurants={restaurants}></RestaurantGrid>;
+}
+
+function RestaurantsPage() {
   return (
     <>
       <header className={classes.header}>
@@ -20,7 +24,9 @@ async function RestaurantsPage() {
         </p>
       </header>
       <main className={classes.main}>
-        <RestaurantGrid restaurants={restaurants}></RestaurantGrid>
+        <Suspense fallback={<p className={classes.loading}>Loading...</p>}>
+          <Restaurants></Restaurants>
+        </Suspense>
       </main>
     </>
   );
