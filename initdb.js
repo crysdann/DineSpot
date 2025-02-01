@@ -1,6 +1,6 @@
 const path = require("path");
 const sql = require("better-sqlite3");
-const dbPath = path.resolve(process.cwd(), "restaurants.db");
+const dbPath = path.resolve("/tmp", "restaurants.db");
 
 const db = sql(dbPath);
 
