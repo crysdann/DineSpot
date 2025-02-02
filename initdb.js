@@ -6,6 +6,9 @@ const sql = require("better-sqlite3");
 const originalDbPath = path.resolve(process.cwd(), "restaurants.db"); // Your original database
 const writableDbPath = path.resolve("/tmp", "restaurants.db");
 
+console.log("Checking database existence at:", writableDbPath);
+console.log("Database exists:", fs.existsSync(writableDbPath));
+
 // Copy the database file to /tmp if it doesn’t exist
 if (!fs.existsSync(writableDbPath)) {
   console.log("Copying database to /tmp...");
