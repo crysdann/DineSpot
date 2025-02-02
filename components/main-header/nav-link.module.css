@@ -8,7 +8,7 @@
 
 .link:hover,
 .link:active {
-  background: linear-gradient(90deg, #fdf6f6, #fdf6f6);
+  background: linear-gradient(90deg, #c5001a, #c5001a);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

@@ -2,9 +2,13 @@ import Image from "next/image";
 
 import { getRestaurant } from "@/lib/restaurants";
 import classes from "./page.module.css";
+import { notFound } from "next/navigation";
 
 function RestaurantDetailsPage({ params }) {
   const restaurant = getRestaurant(params.slug);
+  if (!restaurant) {
+    notFound();
+  }
   restaurant.description = restaurant.description.replace(/\n/g, "<br/>");
   console.log("restaurant: ", restaurant);
   return (
