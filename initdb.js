@@ -1,5 +1,5 @@
 const sql = require("better-sqlite3");
-const db = sql("./tmp/restaurants.db");
+const db = sql("restaurants.db");
 
 const dummyRestaurants = [
   {
@@ -91,7 +91,7 @@ db.prepare(
 
 async function initData() {
   const stmt = db.prepare(`
-      INSERT INTO meals VALUES (
+      INSERT INTO restaurants VALUES (
          null,
          @slug,
          @name,
