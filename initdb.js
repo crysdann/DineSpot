@@ -9,7 +9,11 @@ const writableDbPath = path.resolve("/tmp", "restaurants.db");
 // Copy the database file to /tmp if it doesn’t exist
 if (!fs.existsSync(writableDbPath)) {
   console.log("Copying database to /tmp...");
-  fs.copyFileSync(originalDbPath, writableDbPath);
+  if (fs.existsSync(originalDbPath)) {
+    fs.copyFileSync(originalDbPath, writableDbPath);
+  } else {
+    console.error("Error: restaurants.db is missing in the project directory!");
+  }
 }
 
 // Initialize SQLite database from /tmp
