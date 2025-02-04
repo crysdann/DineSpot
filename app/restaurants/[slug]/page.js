@@ -4,6 +4,14 @@ import { getRestaurant } from "@/lib/restaurants";
 import classes from "./page.module.css";
 import { notFound } from "next/navigation";
 
+export async function generateMetaData({ params }) {
+  const restaurant = getRestaurant(params.restaurantSlug);
+  if (!restaurant) {
+    notFound();
+  }
+  return { name: restaurant.title, description: restaurant.description };
+}
+
 function RestaurantDetailsPage({ params }) {
   const restaurant = getRestaurant(params.slug);
   if (!restaurant) {
