@@ -12,13 +12,15 @@ export async function generateMetaData({ params }) {
   return { name: restaurant.title, description: restaurant.description };
 }
 
-function RestaurantDetailsPage({ params }) {
-  const restaurant = getRestaurant(params.slug);
+async function RestaurantDetailsPage({ params }) {
+  const restaurant = await getRestaurant(params.slug);
+  console.log("🚀 Restaurant Data:", restaurant);
   if (!restaurant) {
+    console.log("❌ Restaurant not found!");
     notFound();
   }
-  restaurant.description = restaurant.description.replace(/\n/g, "<br/>");
-  console.log("restaurant: ", restaurant);
+  if (restaurant.description)
+    restaurant.description = restaurant.description.replace(/\n/g, "<br/>");
   return (
     <>
       <header className={classes.header}>

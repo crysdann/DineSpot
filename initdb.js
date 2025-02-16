@@ -1,5 +1,12 @@
-const sql = require("better-sqlite3");
-const db = sql("restaurants.db");
+// const sql = require("better-sqlite3");
+// const db = sql("restaurants.db");
+
+require("dotenv").config();
+const { Pool } = require("pg");
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: { require: true, rejectUnauthorized: false },
+});
 
 const dummyRestaurants = [
   {
@@ -74,38 +81,45 @@ const dummyRestaurants = [
   },
 ];
 
-db.prepare(
-  `
+async function initializeDB() {
+  const client = await pool.connect();
+  try {
+    await client.query(`
    CREATE TABLE IF NOT EXISTS restaurants (
-       id INTEGER PRIMARY KEY AUTOINCREMENT,
-       slug TEXT NOT NULL UNIQUE,
-       name TEXT NOT NULL,
-       image TEXT NOT NULL,
-       description TEXT NOT NULL,
-       address TEXT NOT NULL,
-       owner TEXT NOT NULL,
-       owner_email TEXT NOT NULL
+        id SERIAL PRIMARY KEY,
+        name TEXT NOT NULL,
+        slug TEXT UNIQUE NOT NULL,
+        image TEXT,
+        description TEXT,
+        address TEXT,
+        owner TEXT,
+        owner_email TEXT
     )
-`
-).run();
+`);
 
-async function initData() {
-  const stmt = db.prepare(`
-      INSERT INTO restaurants VALUES (
-         null,
-         @slug,
-         @name,
-         @image,
-         @description,
-         @address,
-         @owner,
-         @owner_email
-      )
-   `);
+    for (let restaurant of dummyRestaurants) {
+      await client.query(
+        `INSERT INTO restaurants (name, slug, image, description, address, owner, owner_email)
+         VALUES ($1, $2, $3, $4, $5, $6, $7) ON CONFLICT (slug) DO NOTHING;`,
+        [
+          restaurant.name,
+          restaurant.slug,
+          restaurant.image,
+          restaurant.description,
+          restaurant.address,
+          restaurant.owner,
+          restaurant.owner_email,
+        ]
+      );
+    }
 
-  for (const restaurant of dummyRestaurants) {
-    stmt.run(restaurant);
+    console.log("✅ Database initialized with dummy data!");
+  } catch (err) {
+    console.error("❌ Error initializing database:", err);
+  } finally {
+    client.release();
   }
 }
 
-initData();
+// Run initialization
+initializeDB();
