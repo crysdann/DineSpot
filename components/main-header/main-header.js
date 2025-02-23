@@ -23,6 +23,9 @@ function MainHeader() {
             <li>
               <NavLink href="/community">Community</NavLink>
             </li>
+            <li>
+              <NavLink href="/eventsandfestivals">Events And Festivals</NavLink>
+            </li>
           </ul>
         </nav>
       </header>

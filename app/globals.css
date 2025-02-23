@@ -40,3 +40,39 @@ body {
   font-weight: 500;
   color: #ddd8d8;
 }
+.events-list {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+}
+.events-list li {
+  list-style-type: none;
+}
+
+.events-list a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  color: #e5e5e1;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 1.2rem;
+  padding: 0 0 1rem 0;
+}
+
+.events-list a img {
+  width: 100%;
+  height: 14rem;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.events-list a:hover {
+  background-color: #2d2d2b;
+}
+.events-article img {
+  width: 40rem;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+}
